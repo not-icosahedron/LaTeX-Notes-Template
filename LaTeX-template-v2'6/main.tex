@@ -1,0 +1,172 @@
+\begin{filecontents*}[overwrite]{\jobname.xmpdata}
+\Title{LaTeX template}
+\Author{icosahedron}
+\Owner{icosahedron}
+\Language{en-US}
+\Subject{ }
+\end{filecontents*}
+
+\documentclass[11pt, a4paper, twoside, openright]{scrreprt}
+
+\usepackage[a-2b]{pdfx}
+
+%\usepackage[dvipsnames]{xcolor}
+%\colorlet{headingscolor}{Violet}
+%\colorlet{paragraphcolor}{NavyBlue}
+
+%\addtokomafont{chapter}{\color{headingscolor}}
+%\addtokomafont{section}{\color{headingscolor}}
+%\addtokomafont{subsection}{\color{headingscolor}}
+%\addtokomafont{subsubsection}{\color{headingscolor}}
+%\addtokomafont{paragraph}{\color{paragraphcolor}}
+
+\usepackage{lipsum}
+
+\usepackage{scrhack}
+\usepackage{lmodern}
+\usepackage{a4wide}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\input{structure.tex} % Include the file specifying the document structure and custom commands
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage[english]{babel}
+\usepackage[most]{tcolorbox}
+\usepackage{booktabs}
+\usepackage[hyphenation, parindent, lastparline , homeoarchy , rivers]{impnattypo} %may be useless
+ \usepackage[normalem]{ulem}
+ \useunder{\uline}{\ul}{}
+\setlength{\tabcolsep}{0.5em} % for the horizontal padding
+\renewcommand{\arraystretch}{1.2} % for the vertical padding
+\usepackage{multicol}
+\usepackage{bookman}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\definecolor{warmblack}{RGB}{15, 67, 66}
+\usepackage{wrapfig}
+\usepackage{enumitem}
+\setlist{noitemsep}
+\usepackage{emptypage}
+
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage[T1]{fontenc}
+%\fontfamily{georgia}\selectfont
+
+%\usepackage{fontspec} %needs LuaLaTeX
+%\setsansfont{georgiab.ttf}
+%\setsansfont{CiscoSansTTRegular.ttf}  
+
+\newfontfamily{\rim}[Path=./fonts/, Scale=1.5]{WorkSans}
+
+\usepackage{hyperref}
+
+\usepackage{xltabular} %tabularx long table environment
+
+\usepackage{minitoc} 
+\renewcommand{\mtifont}{\small}
+\renewcommand{\mtcfont}{\small}
+\renewcommand{\mtcSfont}{\small}
+\renewcommand{\mtcSSfont}{\small}
+\renewcommand{\mtcSSSfont}{\small}
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{25pt}
+\pagestyle{fancy}
+\fancyhead[L,R]{}
+\fancyhead[LE,RO]{\leftmark}
+\fancyfoot[LE,RO]{\includegraphics[height=0.7cm]{images/logo_finale.png}} %\scriptsize \textsc{Template} version 2.4
+
+%----------------------------------------------------------------------------------------
+%	ASSIGNMENT INFORMATION--- da editare per personalizzare le pagine e il titolo
+%----------------------------------------------------------------------------------------
+
+\title{\colorbox{warmblack}{{\color{white}{\textbf{{\fontsize{42}{24}\selectfont personal \LaTeX template}}}}}}
+\author{Giovanni P. Gambuti \\ \texttt{giovannip.gambuti@gmail.com} \\
+\includegraphics[width=0.3\textwidth]{images/logo_finale.png} } 
+\date{ \small Last revision: \today}
+
+
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+\renewcommand{\listtablename}{Tables}
+
+\dominitoc
+
+\setlength{\tabcolsep}{0.5em} % for the horizontal padding
+\renewcommand{\arraystretch}{1.2} % for the vertical padding
+
+ \input{title-page}
+%\begin{titlepage}
+%\thispagestyle{empty} % Remove page number from this page
+%\maketitle 
+%\end{titlepage}
+\cleardoublepage
+
+%\addtocontents{toc}{\protect\pagestyle{empty}}
+\setcounter{page}{1}
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+\setcounter{page}{1}
+
+\pagestyle{fancy}
+\pagenumbering{arabic}
+
+\chapter{First Chapter}
+\minitoc
+
+\begin{info}
+    This is an Information box!
+\end{info}
+
+\begin{warn}[Warning:]
+    This is a Warning!!
+\end{warn}
+\lipsum[3-5]
+
+\section{First Section}
+\begin{wrapfigure}{O}{0.45\textwidth}
+\begin{YStkyNote}[Sticky Note 1]
+
+This text is \emph{important}. Here is an useful equation:
+\begin{align}
+    \sin (x) \approx x
+\end{align}
+\end{YStkyNote}
+\end{wrapfigure}
+
+\lipsum[1-30]
+\subsection{Subsection}
+\begin{wrapfigure}{O}{0.45\textwidth}
+\begin{BStkyNote}[Sticky Note 2 (blue)]
+\lipsum[1]
+\end{BStkyNote}
+\end{wrapfigure}
+\lipsum[1-10]
+\subsubsection{Subsubsection}
+\begin{wrapfigure}{O}{0.45\textwidth}
+\begin{WStkyNote}[white Sticky Note]
+
+This text is \emph{important}. Here is an useful equation:
+\begin{align}
+    \sin (x) \approx x
+\end{align}
+\end{WStkyNote}
+\end{wrapfigure}
+\lipsum[1-20]
+
+\begin{FullStkyNote}[Full Row Sticky Note]
+
+This text is \emph{important}. Here is an useful equation:
+\begin{align}
+    \sin (x) \approx x
+\end{align}
+\end{FullStkyNote}
+
+
+%\nocite{*}
+%\bibliographystyle{plain}
+%\bibliography{biblio}
+
+\end{document}
